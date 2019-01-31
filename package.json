@@ -5,21 +5,27 @@
   "main": "app.js",
   "scripts": {
     "start": "live-server --port=8000",
+    "starter": "http-server -p 8000",
     "dev": "webpack -w --mode development",
     "build": "webpack --mode production",
+    "json-server": "json-server --watch db.json --port 3004",
     "go": "npm run start && npm run dev"
   },
   "author": "Matt Mozer",
-  "license": "Thomson Reuters",
+  "license": "Demo",
   "devDependencies": {
     "@angular/cli": "^1.7.2",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.3",
     "babel-preset-env": "^1.6.1",
-    "webpack": "^4.0.1"
+    "webpack": "^4.0.1",
+    "webpack-cli": "^3.2.1"
   },
   "dependencies": {
+    "http-server": "^0.11.1",
     "jquery": "^3.1.0",
-    "rxjs": "^5.0.0-beta.12"
+    "rxcss": "^0.10.0",
+    "rxjs": "^5.5.12",
+    "typescript": "^2.9.2"
   }
 }

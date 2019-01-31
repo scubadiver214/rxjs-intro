@@ -2,11 +2,14 @@ import $ from "jquery";
 import Rx from "rxjs/Rx";
 import { from } from "rxjs/observable/from";
 import { of } from "rxjs/observable/of";
-import { concatMap, delay, mergeMap, filter, reduce, map, flatMap, switchMap, exhaustMap, debounceTime } from "rxjs/operators";
-import { printf, print, getGitHubUser, testPostData, clear, FakeWebSocket, http } from "./utils";
+import { concatMap, delay, mergeMap, filter, reduce, map } from "rxjs/operators";
+import { printf, print, getGitHubUser, testPostData, clear, FakeWebSocket } from "./utils";
 
-const { Observable, Subject, pipe, ReplaySubject, BehaviorSubject } = Rx;
+const { Observable, Subject, pipe, ReplaySubject } = Rx;
 const btn = $("#btn");
+const input = $("#input");
+const output = $("#output");
+const btnClear = $("#btnClear");
 
 Observable.fromEvent(btnClear, "click").subscribe(() => {
   clear();
@@ -81,7 +84,7 @@ const doubleBy = x => map(value => value * x);
 // const bar = x => console.log(x);
 
 // const subject = new Subject();
-// const observer1 = subject.subscribe(foo); // When you call subscribe with an observer on an Rx Subject, it will add that observer to an internal list of observers.
+// const observer1 = subject.subscribe(foo);
 // const observer2 = subject.subscribe(bar);
 
 // const tick$ = Observable.interval(1000);
@@ -98,47 +101,3 @@ const doubleBy = x => map(value => value * x);
 // replaySubject.next("hello from ReplaySubject!");
 // replaySubject.next("hello from second event from ReplaySubject!");
 // replaySubject.subscribe(console.log);
-// replaySubject.next("hello from third event from ReplaySubject!");
-
-// BEHAVIOR SUBJECT
-// const behaviorSubject = new BehaviorSubject("hello initial value from BehaviorSubject");
-// behaviorSubject.subscribe(console.log);
-// behaviorSubject.next("hello again from BehaviorSubject");
-
-// MAPPING
-// const namesObservable = of('Pete', 'Paul');
-// namesObservable.pipe(map(name => `${name} is awesome!`)).subscribe(console.log);
-
-// NESTED OBSERVABLES
-// ANYONE EVER USE THE FETCH API?
-//const getNamesApi = Observable.fromPromise(fetch("http://localhost:3004/names")).flatMap(result => result.json());
-
-// PROBLEM - [Object, Object]
-// getNamesApi.pipe(map(name => http.getAwesomeMessagesObservable(name))).subscribe(result => console.log(`${result}`));
-
-// SOLUTION - SUBSCRIBE TO INNER OBSERVABLE!
-// getNamesApi.pipe(map(name => http.getAwesomeMessagesObservable(name))).subscribe(resultObservable => {
-//   resultObservable.subscribe(console.log);
-// });
-
-// MERGE MAP
-// getNamesApi.pipe(mergeMap(name => http.getAwesomeMessagesObservable(name))).subscribe(console.log);
-
-// TYPEAHEAD
-// const suggestions = document.querySelector(".suggestions");
-// const input = document.querySelector(".typeaheadInput");
-
-// const inputStream$ = Observable.fromEvent(input, "keyup").pipe(
-//   map(e => e.target.value),
-//   debounceTime(1500)
-// );
-
-// const suggestionsStream$ = inputStream$.pipe(
-//   mergeMap(input => fetch(`https://api.datamuse.com/sug?s=${input}`)),
-//   switchMap(result => result.json()),
-//   map(keywords => keywords.map(key => key.word))
-// );
-
-// suggestionsStream$.subscribe(words => {
-//   suggestions.innerText = words.join("\n");
-// });

@@ -1,0 +1,51 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "title": "test 2",
+      "author": "Homer"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "id": 2,
+      "body": "The Oddysey",
+      "postId": 2
+    }
+  ],
+  "profile": [
+    {
+      "name": "typicode"
+    },
+    {
+      "name": "foo"
+    }
+  ],
+  "names": [
+    {
+      "name": "Pete"
+    },
+    {
+      "name": "Paul"
+    },
+    {
+      "name": "Wilbur"
+    },
+    {
+      "name": "Butch"
+    },
+    {
+      "name": "sully"
+    }
+  ]
+}
